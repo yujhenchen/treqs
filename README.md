@@ -1,6 +1,6 @@
-# T-Reqs
+# T-Reqs: Tooling to enable teams to manage system requirements in large-scale agile system develpment
 
-Tool Support for Managing Requirements in Large-Scale Agile System Development (version 3.0)
+version 3.0
 
 ## Getting Started
 
@@ -44,22 +44,50 @@ checkConsistency.check()
 
 Change directory to the example project.
 
-### Generate requirement:
+### Generate requirement
+
+input command:
 
 ```
-Give an example
+generatereq
+```
+workflow:
+
+@startuml
+actor Developer
+participant Treqs
+participant Project
+
+'generate requirement
+group Generate requirement
+
+Developer->Treqs: generatereq
+Developer->Treqs: select requirement type
+Developer->Treqs: choose requirements document
+Developer->Treqs: choose link requirement
+Developer->Treqs: choose parent requirement in document (if any)
+Developer->Treqs: input requirement content
+Treqs->Developer: generate requirement tag
+Developer->Project: copy requirement tag into requirements document
+end
+
+@enduml
+
+
+### Generate requirements document
+
+input command:
+
+```
+generatereqdoc
 ```
 
-### Generate requirements document:
+### Check consistency
+
+input command:
 
 ```
-Give an example
-```
-
-### Check consistency:
-
-```
-Give an example
+treqs
 ```
 
 ## Authors
@@ -70,6 +98,8 @@ Give an example
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
-## Acknowledgments
+## Further reading
 
-* 
+* [RE for Large-Scale Agile System Development](https://oerich.wordpress.com/2017/06/28/re-for-large-scale-agile-system-development/) 
+* [T-Reqs: Tool Support for Managing Requirements in Large-Scale Agile System Development](https://arxiv.org/abs/1805.02769)
+* [Requirements Engineering for Large-Scale Agile System Development: A Tooling Perspective](https://odr.chalmers.se/handle/20.500.12380/300667)
