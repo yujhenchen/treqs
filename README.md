@@ -114,7 +114,7 @@ treqs requires a full absolute directory of these requirements files:
 Elements files directory:
 ```
 
-treqs requires a file patterns for each requirement type:
+treqs requires a file pattern for each requirement type:
 ```
 US file pattern:
 SR file pattern:
