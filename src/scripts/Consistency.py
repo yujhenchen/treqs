@@ -34,7 +34,7 @@ class Consistency(object):
             pass
 
 
-    def read_all_content(self, filePattern=r'SR.*?\.md'):
+    def read_all_content(self, file_pattern=r'SR.*?\.md'):
         appended_data = []
         df_all = pd.DataFrame()
         try:
@@ -42,7 +42,7 @@ class Consistency(object):
                 # for directory in directories
                 for filename in filenames:
                     # Only files matching the given pattern are scanned
-                    match = re.search(filePattern, filename)
+                    match = re.search(file_pattern, filename)
                     if match:
                         entry = os.path.join(root, filename)
                         # read each file into single dataframe
@@ -62,9 +62,9 @@ class Consistency(object):
 
 
     def prepare_all_content(self, requirement):
-        filePattern = input(requirement+" file pattern:")
+        file_pattern = input(requirement+" file pattern:")
         self.req_cur = requirement
-        return self.read_all_content(filePattern)
+        return self.read_all_content(file_pattern)
 
 
     def prepare_test(self):

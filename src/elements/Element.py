@@ -79,16 +79,16 @@ class Element(object):
         self.df = self.df.sort_values(by=[col_sort])
 
 
-    def update_customid(self, parent, customIdReqType, column_parent):
+    def update_customid(self, parent, custom_id_req_type, column_parent):
         id_count = 1
         # get row ids which column link_sr == parent
         ls_idx = self.df.index[self.df[column_parent] == parent].tolist()
         for idx in ls_idx:
-            self.df.loc[idx, param.CUSTOM_ID] = customIdReqType + str(id_count)
+            self.df.loc[idx, param.CUSTOM_ID] = custom_id_req_type + str(id_count)
             id_count = id_count + 1
 
 
-    def prepare_customids(self, idReqType):
+    def prepare_customids(self, id_req_type):
         try:
             # reset all custom_ids
             self.df[param.CUSTOM_ID] = param.EMPTY
@@ -99,10 +99,10 @@ class Element(object):
             # get custom_id of parent
             for parent in ls_parent:
                 if parent == param.ROOT_ID:
-                    customIdReqType = idReqType
+                    custom_id_req_type = id_req_type
                 else:
-                    customIdReqType = self.df.loc[self.df[param.UID] == parent, param.CUSTOM_ID].values[0] + param.SEP_DOT
-                self.update_customid(parent, customIdReqType, param.LINK_ELEMENT)
+                    custom_id_req_type = self.df.loc[self.df[param.UID] == parent, param.CUSTOM_ID].values[0] + param.SEP_DOT
+                self.update_customid(parent, custom_id_req_type, param.LINK_ELEMENT)
         except Exception:
             print("prepare_customids Exception")
 
