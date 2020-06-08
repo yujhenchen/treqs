@@ -28,71 +28,111 @@ Change directory to 'treqs', which contains setup.py file. Install the project a
 pip install -e .
 ```
 
-## Running the tests
-
-A test script test.py is under '/tests' directory.
-
-### Example of using test script
-
-Execute treqs funstions by uncomment the following line in test.py:
-
-```
-checkConsistency.check()
-```
-
 ## Functions of T-Reqs
-
-Change directory to the example project.
 
 ### Generate requirement
 
-input command:
-
+Change directory to the example project. Input command:
 ```
 generatereq
 ```
-workflow:
 
-@startuml
-actor Developer
-participant Treqs
-participant Project
+#### Steps:
 
-'generate requirement
-group Generate requirement
+treqs requires a requirement type. The supporting types of the project are: **US** (user story), **SR** (system requirement), **QR** (quality requirement), and **TC** (test case)
+```
+Type of requirement:
+```
 
-Developer->Treqs: generatereq
-Developer->Treqs: select requirement type
-Developer->Treqs: choose requirements document
-Developer->Treqs: choose link requirement
-Developer->Treqs: choose parent requirement in document (if any)
-Developer->Treqs: input requirement content
-Treqs->Developer: generate requirement tag
-Developer->Project: copy requirement tag into requirements document
-end
+treqs requires a full absolute path of link requirement:
+```
+Choose XX file path:
+```
 
-@enduml
+treqs requires the uid of link requirement:
+```
+Choose link XX uid:
+```
 
+treqs requires a full absolute path of parent requirement in the same requirement document (if there is any):
+```
+Choose XX file path:
+```
+
+treqs requires the uid of parent requirement (if there is any):
+```
+Choose link XX uid:
+```
+
+treqs requires the content of requirement:
+```
+Input content:
+```
+
+Copy the generated text to the target requirement document. The text is presented as:
+```
+<element id=...></element>
+```
 
 ### Generate requirements document
 
-input command:
-
+Input command:
 ```
 generatereqdoc
 ```
+#### Steps:
+
+treqs requires a full absolute path of a requirements file:
+```
+Path of requirements file:
+```
+
+treqs requires a requirement type. The supporting types of the project are: **US** (user story), **SR** (system requirement), **QR** (quality requirement), and **TC** (test case)
+```
+Type of requirement:
+```
+
+A newly generated .md file can be found in the given directory. This file is a requirements document that contains the numeric ID of each requirement in the requirements document.
 
 ### Check consistency
 
-input command:
-
+Input command:
 ```
 treqs
 ```
 
+Select requirement types that intend to check:
+```
+Check user stories? (y or n):
+Check system requirement? (y or n):
+Check quality requirement? (y or n):
+Check test case? (y or n):
+```
+
+treqs requires a full absolute directory of these requirements files:
+```
+Elements files directory:
+```
+
+treqs requires a file patterns for each requirement type:
+```
+US file pattern:
+SR file pattern:
+QR file pattern:
+TC file pattern:
+```
+
+If the test case is chosen, treqs requires full absolute directory of test codes and file pattern of test codes:
+```
+Test code files directory:
+TC file pattern:
+```
+
+A newly generated summary_XXX.txt file can be found in the given directory. This file provides results of consistency checking.
+
 ## Authors
 
-* **Yu-Jhen Chen** - *Initial work* - [yujhenchen](https://github.com/yujhenchen)
+* **Yu-Jhen Chen** - [yujhenchen](https://github.com/yujhenchen)
 
 ## License
 
