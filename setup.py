@@ -10,9 +10,9 @@ setup(name='treqs',
       packages=find_packages(),
       entry_points={
           'console_scripts': [
-              'treqs=_treqs.functions.checkConsistency:check',
-              'generatereq=_treqs.functions.generateReq:generate',
-              'generatereqdoc=_treqs.functions.generateReqDoc:generate_doc',
+              'treqs=src.scripts.checkConsistency:check',
+              'generatereq=src.scripts.generateReq:generate',
+              'generatereqdoc=src.scripts.generateReqDoc:generate_doc',
           ],
       },
       install_requires=['python-gitlab','gitpython' ,'wheel', 'sphinx', 'html-parser', 'htmltag', 'pandas', 'uuid'],
