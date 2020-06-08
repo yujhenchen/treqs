@@ -1,5 +1,5 @@
 from src.elements import UseElement
-from src import parameters
+from src import parameters as param
 from src.scripts import generateReq
 from src.scripts import generateReqDoc
 from src.scripts import checkConsistency
@@ -15,13 +15,13 @@ from html.parser import HTMLParser
 # read batabase
 # main table
 # processObj = UseElement.UseElement()
-# data_db = processObj.getAllDataFromDB(parameters.usReq)
+# data_db = processObj.getAllDataFromDB(param.US_REQ)
 # print(data_db)
 # print(type(data_db))
 # print(type(data_db[0]))
 
 # # temp table
-# data_db = processObj.getAllDataFromDB(parameters.usReq, parameters.table_reqType)
+# data_db = processObj.getAllDataFromDB(param.US_REQ, param.table_reqType)
 # print(data_db)
 
 
@@ -29,11 +29,11 @@ from html.parser import HTMLParser
 # # write database
 # # main table
 # set_data = "'usuid12457', 'US', 'test US insert', 'eee@g.com', '2020-08-14 00:00:00', 0"
-# processObj.writeDataToDB(parameters.usReq,set_data)
+# processObj.writeDataToDB(param.US_REQ,set_data)
 # print("done")
 
 # # temp table
-# processObj.writeDataToDB(parameters.usReq,set_data, parameters.table_reqType)
+# processObj.writeDataToDB(param.US_REQ,set_data, param.table_reqType)
 # print("done")
 
 
@@ -132,21 +132,21 @@ from html.parser import HTMLParser
 # path = r"C:\Users\zn\Desktop\Chalmers\ProjectWork\cse\research\treqs\treqs\templates\QR_.md"
 # path = r"C:\Users\zn\Desktop\Chalmers\ProjectWork\cse\research\treqs\treqs\templates\TC_.md"
 
-# processObj.readContent(parameters.usReq, path)
-# print(processObj.getContent(parameters.usReq))
-#print(list(processObj.getContent(parameters.usReq).columns.values))
+# processObj.read_content(param.US_REQ, path)
+# print(processObj.get_content(param.US_REQ))
+#print(list(processObj.get_content(param.US_REQ).columns.values))
 
-# processObj.readContent(parameters.srReq, path)
-# print(processObj.getContent(parameters.srReq))
-# # print(list(processObj.getContent(parameters.srReq).columns.values))
+# processObj.read_content(param.SR_REQ, path)
+# print(processObj.get_content(param.SR_REQ))
+# # print(list(processObj.get_content(param.SR_REQ).columns.values))
 
-# processObj.readContent(parameters.qrReq, path)
-# print(processObj.getContent(parameters.qrReq))
-# # print(list(processObj.getContent(parameters.qrReq).columns.values))
+# processObj.read_content(param.QR_REQ, path)
+# print(processObj.get_content(param.QR_REQ))
+# # print(list(processObj.get_content(param.QR_REQ).columns.values))
 
-# processObj.readContent(parameters.tcReq, path)
-# print(processObj.getContent(parameters.tcReq))
-# # print(list(processObj.getContent(parameters.tcReq).columns.values))
+# processObj.read_content(param.TC_REQ, path)
+# print(processObj.get_content(param.TC_REQ))
+# # print(list(processObj.get_content(param.TC_REQ).columns.values))
 # =====================================================================
 
 
@@ -156,10 +156,10 @@ from html.parser import HTMLParser
 # =====================================================================
 # # format data from dataframe
 # # write formated data into _.md file
-# processObj.writContent(parameters.usReq)
-# processObj.writContent(parameters.srReq)
-# processObj.writContent(parameters.qrReq)
-# processObj.writContent(parameters.tcReq)
+# processObj.writContent(param.US_REQ)
+# processObj.writContent(param.SR_REQ)
+# processObj.writContent(param.QR_REQ)
+# processObj.writContent(param.TC_REQ)
 # =====================================================================
 
 
@@ -168,10 +168,10 @@ from html.parser import HTMLParser
 
 # =====================================================================
 # # dump dataframe into database
-# processObj.writeDataFrameToDB(parameters.usReq)
-# processObj.writeDataFrameToDB(parameters.srReq)
-# processObj.writeDataFrameToDB(parameters.qrReq)
-# processObj.writeDataFrameToDB(parameters.tcReq)
+# processObj.writeDataFrameToDB(param.US_REQ)
+# processObj.writeDataFrameToDB(param.SR_REQ)
+# processObj.writeDataFrameToDB(param.QR_REQ)
+# processObj.writeDataFrameToDB(param.TC_REQ)
 # =====================================================================
 
 
@@ -180,17 +180,17 @@ from html.parser import HTMLParser
 
 # =====================================================================
 # # dump database into dataframe
-# processObj.readDBToDataFrame(parameters.usReq)
-# print(processObj.getContent(parameters.usReq))
+# processObj.readDBToDataFrame(param.US_REQ)
+# print(processObj.get_content(param.US_REQ))
 
-# processObj.readDBToDataFrame(parameters.srReq)
-# print(processObj.getContent(parameters.srReq))
+# processObj.readDBToDataFrame(param.SR_REQ)
+# print(processObj.get_content(param.SR_REQ))
 
-# processObj.readDBToDataFrame(parameters.qrReq)
-# print(processObj.getContent(parameters.qrReq))
+# processObj.readDBToDataFrame(param.QR_REQ)
+# print(processObj.get_content(param.QR_REQ))
 
-# processObj.readDBToDataFrame(parameters.tcReq)
-# print(processObj.getContent(parameters.tcReq))
+# processObj.readDBToDataFrame(param.TC_REQ)
+# print(processObj.get_content(param.TC_REQ))
 # =====================================================================
 
 
@@ -224,14 +224,14 @@ from html.parser import HTMLParser
 #print(element("requirement content", id="437f09c6-9613-11ea-bb37-0242ac130002", type="requirement", link_us="437f09c6-9613-11ea-bb37-0242ac130002", link_sr="437f09c6-9613-11ea-bb37-0242ac130002", email="yyy@yahii", date="20200101 00:00:00"))
 
 # processObj = UseElement.UseElement()
-# print(processObj.createElement("content", "uid", "TC", "us", "sr", "mail", "date"))
+# print(processObj.create_element("content", "uid", "TC", "us", "sr", "mail", "date"))
 # =====================================================================
 
 
 # generateReq.generate()
 
 
-# generateReqDoc.generate_doc()
+generateReqDoc.generate_doc()
 
 
 # f_path = r"C:\Users\zn\Desktop\test_templates\SR_.md"
@@ -242,20 +242,20 @@ from html.parser import HTMLParser
 
 
 # dir_path = r"C:\Users\zn\Desktop\recur_dir"
-# content = checkConsistency.readAllContent(dir_path)
+# content = checkConsistency.read_all_content(dir_path)
 # print(content)
 
-checkConsistency.check()
+# checkConsistency.check()
 
 
 # with open(r"C:\Users\zn\Desktop\recur_dir\dir_sub\bxx\c.py") as f:
 #     content = f.read()
-#     ls = re.findall(parameters.element_begin+'.*?'+parameters.element_end, content)
+#     ls = re.findall(param.ELEMENT_BEGIN+'.*?'+param.ELEMENT_END, content)
     #print(ls)
             
     #for line in f:
     #    line = line.rstrip()
-    #    print(parameters.element_begin in line)
-    #    print(line.endswith(parameters.element_end))
-    #    if (parameters.element_begin in line) and (line.endswith(parameters.element_end)):
+    #    print(param.ELEMENT_BEGIN in line)
+    #    print(line.endswith(param.ELEMENT_END))
+    #    if (param.ELEMENT_BEGIN in line) and (line.endswith(param.ELEMENT_END)):
     #        print(line)

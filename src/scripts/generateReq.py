@@ -1,6 +1,3 @@
-import os
-from git import Repo
-from datetime import datetime
 from src import parameters as param
 from src.elements import UseElement
 from src import utilities
@@ -12,17 +9,17 @@ def generate():
     requirement = input("Type of requirement:")
     link_other=""
     link_element=""
-    if requirement == param.usReq:
-        link_element = set_requirement_link(param.usReq)
-    elif requirement == param.srReq:
-        link_other = set_requirement_link(param.usReq)
-        link_element = set_requirement_link(param.srReq)
-    elif requirement == param.qrReq:
-        link_other = set_requirement_link(param.srReq)
-        link_element = set_requirement_link(param.qrReq)
-    elif requirement == param.tcReq:
-        link_other = set_requirement_link(param.srReq)
-        link_element = set_requirement_link(param.tcReq)
+    if requirement == param.US_REQ:
+        link_element = set_requirement_link(param.US_REQ)
+    elif requirement == param.SR_REQ:
+        link_other = set_requirement_link(param.US_REQ)
+        link_element = set_requirement_link(param.SR_REQ)
+    elif requirement == param.QR_REQ:
+        link_other = set_requirement_link(param.SR_REQ)
+        link_element = set_requirement_link(param.QR_REQ)
+    elif requirement == param.TC_REQ:
+        link_other = set_requirement_link(param.SR_REQ)
+        link_element = set_requirement_link(param.TC_REQ)
     else:
         print("Unknown requirement type!")
         generate()
@@ -39,27 +36,15 @@ def generate_uid(requirement):
     return requirement+'_'+str(uuid.uuid1().hex)
 
 
-def getDateTime():
-    now = datetime.now().date()
-    return now.strftime("%Y-%m-%d %H:%M:%S")
-
-
-def getEmail():
-    repo = Repo('.', search_parent_directories=True)
-    path = repo.working_tree_dir
-    path = os.path.normpath(path)
-    reader = repo.config_reader()
-    email = reader.get_value(param.user, param.email)
-    return email
 
 
 def form_generated(requirement, content, link_other="", link_element=""):
     uid = generate_uid(requirement)
-    dateTime = getDateTime()
-    email = getEmail()
+    dateTime = utilities.get_datetime(False)
+    email = utilities.get_email()
     # base on different requirement, generate different format and print on the screen
     useElement = UseElement.UseElement()
-    return useElement.createElement(content, uid, requirement, link_other, link_element, email, dateTime)
+    return useElement.create_element(content, uid, requirement, link_other, link_element, email, dateTime)
     
 
 def set_requirement_link(requirement):
@@ -68,9 +53,9 @@ def set_requirement_link(requirement):
     path = input("Choose "+requirement+" file path:")
 
     useElement = UseElement.UseElement()
-    # useElement.readContent(requirement, path)
-    useElement.readContent(requirement, utilities.readFile(path))
-    df = useElement.getContent(requirement)
+    # useElement.read_content(requirement, path)
+    useElement.read_content(requirement, utilities.read_file(path))
+    df = useElement.get_content(requirement)
     if len(df.index) > 0:
         print(df)
     else:

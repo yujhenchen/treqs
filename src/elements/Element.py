@@ -1,5 +1,4 @@
 import os
-import datetime
 from src import parameters as param
 from src import utilities
 import pandas as pd
@@ -13,10 +12,10 @@ class MyHTMLParser(HTMLParser):
         self.links.append(attr)
 
     def handle_data(self, data):
-        #if data == param.sep_newline:
+        #if data == param.SEP_NEWLINE:
         if data.rstrip() == "":
             return
-        dic = {param.content: data}
+        dic = {param.CONTENT: data}
         self.contents.append(dic)
 
 
@@ -26,131 +25,109 @@ class Element(object):
         self.df = pd.DataFrame()
 
 
-    #def readContent(self, path, columns_f):
-    def readContent(self, content, columns_f):
+    def read_content(self, content, columns_f):
         # get list of file content and convert into pandas table
         ls_row = []
-        #ls_elements = self.readElementsToList(path)
-        ls_elements = self.readElementsToList(content)
+        ls_elements = self.read_elements_to_list(content)
         try:
             for map_item in ls_elements:
                 ls_row_item = [map_item[item] for item in columns_f]
                 ls_row.append(ls_row_item)
             self.df = pd.DataFrame(ls_row, columns = columns_f)
         except Exception:
-            print("readContent Exception")
+            print("read_content Exception")
 
 
-    def setContent(self, df):
+    def set_content(self, df):
         self.df = df
 
 
-    def getContent(self):
+    def get_content(self):
         return self.df
 
 # ============================================================
-    # def queryDataFrame(self, column_query, value_query):
+    # def query_dataFrame(self, column_query, value_query):
     #     try:
     #         return self.df.loc[self.df[column_query] == value_query]
     #     except Exception:
-    #         print("queryDataFrame Exception")    
+    #         print("query_dataFrame Exception")    
 
 
-    # def queryAllDataFrame(self, value_query):
+    # def query_all_dataFrame(self, value_query):
     #     try:
     #         return self.df[self.df.isin([value_query]).any(axis=1)]
     #     except Exception:
-    #         print("queryAllDataFrame Exception") 
+    #         print("query_all_dataFrame Exception") 
 
 
-    # def queryDuplicate(self, column):
+    # def query_duplicate(self, column):
     #     try:
     #         return self.df[self.df.duplicated([column], keep=False)]
     #     except Exception:
-    #         print("queryDuplicate Exception") 
+    #         print("query_duplicate Exception") 
 
 
-    # def querySelfMissing(self, column, column_target):
+    # def query_self_missing(self, column, column_target):
     #     try:
     #         return self.df[self.df.apply(lambda x: x[column] not in x[column_target], axis=1)]
     #     except Exception:
-    #         print("querySelfMissing Exception") 
+    #         print("query_self_missing Exception") 
 # ============================================================
 
 
-    def sortDataFrame(self, col_sort):
+    def sort_dataframe(self, col_sort):
         self.df = self.df.sort_values(by=[col_sort])
 
 
-    def updateCustomId(self, parent, customIdReqType, column_parent):
+    def update_customid(self, parent, customIdReqType, column_parent):
         id_count = 1
         # get row ids which column link_sr == parent
         ls_idx = self.df.index[self.df[column_parent] == parent].tolist()
         for idx in ls_idx:
-            self.df.loc[idx, param.custom_id] = customIdReqType + str(id_count)
+            self.df.loc[idx, param.CUSTOM_ID] = customIdReqType + str(id_count)
             id_count = id_count + 1
 
 
-    def prepareCustomIds(self, idReqType):
+    def prepare_customids(self, idReqType):
         try:
             # reset all custom_ids
-            self.df[param.custom_id] = param.empty
-            #print((self.df_SR.loc[self.df_SR[param.link_sr] == param.root_id]))
+            self.df[param.CUSTOM_ID] = param.EMPTY
+            #print((self.df_SR.loc[self.df_SR[param.LINK_SR] == param.ROOT_ID]))
     
             # list unique parent
-            ls_parent = self.df[param.link_element].unique()
+            ls_parent = self.df[param.LINK_ELEMENT].unique()
             # get custom_id of parent
             for parent in ls_parent:
-                if parent == param.root_id:
+                if parent == param.ROOT_ID:
                     customIdReqType = idReqType
                 else:
-                    customIdReqType = self.df.loc[self.df[param.uid] == parent, param.custom_id].values[0] + param.sep_dot
-                self.updateCustomId(parent, customIdReqType, param.link_element)
+                    customIdReqType = self.df.loc[self.df[param.UID] == parent, param.CUSTOM_ID].values[0] + param.SEP_DOT
+                self.update_customid(parent, customIdReqType, param.LINK_ELEMENT)
         except Exception:
-            print("prepareCustomIds Exception")
+            print("prepare_customids Exception")
 
 
-    def prepareWriteFile(self, path, requirement):
-        str_date = utilities.getDateTimeStr()
+    def prepare_write_file(self, path, requirement):
+        str_date = utilities.get_datetime(True)
         try:
             dir_path = os.path.split(path)
-            # datetime_obj = datetime.datetime.now()
-            # str_date = datetime_obj.strftime("-%b%d%Y-%H%M%S")
-            # str_date = str(datetime_obj.year)+str(datetime_obj.month)+str(datetime_obj.day)+'-'+str(datetime_obj.hour)+str(datetime_obj.minute)+str(datetime_obj.second)
-            return dir_path[param.index_zero]+"/"+requirement+"_"+str_date+".md"
+            return dir_path[param.INDEX_ZERO]+"/"+requirement+"_"+str_date+".md"
         except Exception:
-            print("prepareWriteFile Exception")
+            print("prepare_write_file Exception")
             return path+requirement+str_date+".md"
         
     
-    def writeContent(self):
+    def write_content(self):
         print("")
 
 
-    def formatData(self):
+    def format_data(self):
         print("")
 
 
     # read _.md file
-    #def readElementsToList(self, f_path):
-    def readElementsToList(self, content):
-        # read file
-        # try:
-        #     with open(f_path) as f:
-        #         content = f.read()
-        # except EnvironmentError: # parent of IOError, OSError *and* WindowsError where available
-        #     print("readElementsToList Error: file error!")
-        #     return []
-        # parser = MyHTMLParser()
-        # parser.links = []
-        # parser.contents = []
-        # parser.feed(content)
-        # # combine tag list and content list
-        # ls = [{**dic, **dic_content} for dic, dic_content in zip(parser.links, parser.contents)]
-        # return ls
+    def read_elements_to_list(self, content):
         try: 
-        #    with open(f_path) as f:
-        #        content = f.read()
             parser = MyHTMLParser()
             parser.links = []
             parser.contents = []
@@ -159,9 +136,9 @@ class Element(object):
             ls = [{**dic, **dic_content} for dic, dic_content in zip(parser.links, parser.contents)]
             return ls
         except Exception:
-            print("readElementsToList Exception")
+            print("read_elements_to_list Exception")
             return []
 
 
-    def createElement(self, content, uid, link_other, link_element, email, dt):
+    def create_element(self, content, uid, link_other, link_element, email, dt):
         print("")

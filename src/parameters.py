@@ -1,42 +1,42 @@
 # information of developer
-user  = "user"
-email  = "email"
+USER  = "user"
+EMAIL  = "email"
 
 # requirement types
-usReq = "US"
-srReq = "SR"
-qrReq = "QR"
-tcReq = "TC"
-atReq = "AT"
+US_REQ = "US"
+SR_REQ = "SR"
+QR_REQ = "QR"
+TC_REQ = "TC"
+AT_REQ = "AT"
 
 # column (array format)
-us_columns = ['id', 'type', 'content', 'link_element', 'email', 'date']
-sr_columns = ['id', 'type', 'content', 'link_us', 'link_element', 'email', 'date']
-qr_columns = ['id', 'type', 'content', 'link_sr', 'link_element', 'email', 'date']
-tc_columns = ['id', 'type', 'content', 'link_sr', 'link_element', 'email', 'date']
+US_COLUMNS = ['id', 'type', 'content', 'link_element', 'email', 'date']
+SR_COLUMNS = ['id', 'type', 'content', 'link_us', 'link_element', 'email', 'date']
+QR_COLUMNS = ['id', 'type', 'content', 'link_sr', 'link_element', 'email', 'date']
+TC_COLUMNS = ['id', 'type', 'content', 'link_sr', 'link_element', 'email', 'date']
 
 # column (generate custom_id and write)
-us_columns_wr = ['id', 'custom_id', 'type', 'content', 'link_element', 'email', 'date']
-sr_columns_wr = ['id', 'custom_id', 'type', 'content', 'link_us', 'link_element', 'email', 'date']
-qr_columns_wr = ['id', 'custom_id', 'type', 'content', 'link_sr', 'link_element', 'email', 'date']
-tc_columns_wr = ['id', 'custom_id', 'type', 'content', 'link_sr', 'link_element', 'email', 'date']
+US_COLUMNS_wr = ['id', 'custom_id', 'type', 'content', 'link_element', 'email', 'date']
+SR_COLUMNS_wr = ['id', 'custom_id', 'type', 'content', 'link_us', 'link_element', 'email', 'date']
+QR_COLUMNS_wr = ['id', 'custom_id', 'type', 'content', 'link_sr', 'link_element', 'email', 'date']
+TC_COLUMNS_wr = ['id', 'custom_id', 'type', 'content', 'link_sr', 'link_element', 'email', 'date']
 
 # key words
-root_id = 'root'
-uid = 'id'
-custom_id = 'custom_id'
-content ='content'
-date = 'date'
-link_us = 'link_us'
-link_sr = 'link_sr'
-link_element = 'link_element'
-file_name = 'file_name'
+ROOT_ID = 'root'
+UID = 'id'
+CUSTOM_ID = 'custom_id'
+CONTENT ='content'
+DATE = 'date'
+LINK_US = 'link_us'
+LINK_SR = 'link_sr'
+LINK_ELEMENT = 'link_element'
+FILE_NAME = 'file_name'
 
-sep_newline = '\n'
-sep_dot = '.'
-empty = 'null'
-empty_str = ''
-element_begin = '<element'
-element_end = '</element>'
+SEP_NEWLINE = '\n'
+SEP_DOT = '.'
+EMPTY = 'null'
+EMPTY_STR = ''
+ELEMENT_BEGIN = '<element'
+ELEMENT_END = '</element>'
 
-index_zero = 0
+INDEX_ZERO = 0

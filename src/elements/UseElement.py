@@ -1,4 +1,4 @@
-from src import parameters
+from src import parameters as param
 from src.elements import USElement, SRElement, TCElement, QRElement#, mATElement
 
 
@@ -11,67 +11,67 @@ class UseElement:
         self.tcElement = TCElement.TCElement()
 
     
-    def setContent(self, requirement, df):
-        if(requirement == parameters.usReq):
-            return self.usElement.setContent(df)
-        if(requirement == parameters.srReq):
-            return self.reqElement.setContent(df)
-        if(requirement == parameters.qrReq):
-            return self.qrElement.setContent(df)
-        if(requirement == parameters.tcReq):
-            return self.tcElement.setContent(df)
+    def set_content(self, requirement, df):
+        if(requirement == param.US_REQ):
+            return self.usElement.set_content(df)
+        if(requirement == param.SR_REQ):
+            return self.reqElement.set_content(df)
+        if(requirement == param.QR_REQ):
+            return self.qrElement.set_content(df)
+        if(requirement == param.TC_REQ):
+            return self.tcElement.set_content(df)
 
     
-    def getContent(self, requirement):
-        if(requirement == parameters.usReq):
-            return self.usElement.getContent()
-        if(requirement == parameters.srReq):
-            return self.reqElement.getContent()
-        if(requirement == parameters.qrReq):
-            return self.qrElement.getContent()
-        if(requirement == parameters.tcReq):
-            return self.tcElement.getContent()
+    def get_content(self, requirement):
+        if(requirement == param.US_REQ):
+            return self.usElement.get_content()
+        if(requirement == param.SR_REQ):
+            return self.reqElement.get_content()
+        if(requirement == param.QR_REQ):
+            return self.qrElement.get_content()
+        if(requirement == param.TC_REQ):
+            return self.tcElement.get_content()
 
 
-    def readContent(self, requirement, content):
-        if(requirement == parameters.usReq):
-            self.usElement.readContent(content, parameters.us_columns)
-        if(requirement == parameters.srReq):
-            self.reqElement.readContent(content, parameters.sr_columns)
-        if(requirement == parameters.qrReq):
-            self.qrElement.readContent(content, parameters.qr_columns)
-        if(requirement == parameters.tcReq):
-            self.tcElement.readContent(content, parameters.tc_columns)
+    def read_content(self, requirement, content):
+        if(requirement == param.US_REQ):
+            self.usElement.read_content(content, param.US_COLUMNS)
+        if(requirement == param.SR_REQ):
+            self.reqElement.read_content(content, param.SR_COLUMNS)
+        if(requirement == param.QR_REQ):
+            self.qrElement.read_content(content, param.QR_COLUMNS)
+        if(requirement == param.TC_REQ):
+            self.tcElement.read_content(content, param.TC_COLUMNS)
 
 
-    def createElement(self, content, uid, requirement, link_other, link_element, email, dateTime):
-        if(requirement == parameters.usReq):
-            return self.usElement.createElement(content, uid, link_element, email, dateTime)
-        if(requirement == parameters.srReq):
-            return self.reqElement.createElement(content, uid, link_other, link_element, email, dateTime)
-        if(requirement == parameters.qrReq):
-            return self.qrElement.createElement(content, uid, link_other, link_element, email, dateTime)
-        if(requirement == parameters.tcReq):
-            return self.tcElement.createElement(content, uid, link_other, link_element, email, dateTime)
+    def create_element(self, content, uid, requirement, link_other, link_element, email, dateTime):
+        if(requirement == param.US_REQ):
+            return self.usElement.create_element(content, uid, link_element, email, dateTime)
+        if(requirement == param.SR_REQ):
+            return self.reqElement.create_element(content, uid, link_other, link_element, email, dateTime)
+        if(requirement == param.QR_REQ):
+            return self.qrElement.create_element(content, uid, link_other, link_element, email, dateTime)
+        if(requirement == param.TC_REQ):
+            return self.tcElement.create_element(content, uid, link_other, link_element, email, dateTime)
 
 
-    def prepareCustomIds(self, requirement):
-        if(requirement == parameters.usReq):
-            self.usElement.prepareCustomIds(parameters.usReq)
-        if(requirement == parameters.srReq):
-            self.reqElement.prepareCustomIds(parameters.srReq)
-        if(requirement == parameters.qrReq):
-            self.qrElement.prepareCustomIds(parameters.qrReq)
-        if(requirement == parameters.tcReq):
-            self.tcElement.prepareCustomIds(parameters.tcReq)
+    def prepare_customids(self, requirement):
+        if(requirement == param.US_REQ):
+            self.usElement.prepare_customids(param.US_REQ)
+        if(requirement == param.SR_REQ):
+            self.reqElement.prepare_customids(param.SR_REQ)
+        if(requirement == param.QR_REQ):
+            self.qrElement.prepare_customids(param.QR_REQ)
+        if(requirement == param.TC_REQ):
+            self.tcElement.prepare_customids(param.TC_REQ)
 
 
-    def writeContent(self, requirement, path):
-        if(requirement == parameters.usReq):
-            self.usElement.writeContent(path)
-        if(requirement == parameters.srReq):
-            self.reqElement.writeContent(path)
-        if(requirement == parameters.qrReq):
-            self.qrElement.writeContent(path)
-        if(requirement == parameters.tcReq):
-            self.tcElement.writeContent(path)
+    def write_content(self, requirement, path):
+        if(requirement == param.US_REQ):
+            self.usElement.write_content(path)
+        if(requirement == param.SR_REQ):
+            self.reqElement.write_content(path)
+        if(requirement == param.QR_REQ):
+            self.qrElement.write_content(path)
+        if(requirement == param.TC_REQ):
+            self.tcElement.write_content(path)

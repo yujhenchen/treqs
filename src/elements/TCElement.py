@@ -4,46 +4,20 @@ from src.elements import Element
 
 class TCElement(Element.Element):
 
-    #def readContent(self, path):
-    #    super().readContent(path, param.tc_columns)
-    # def readContent(self, content):
-    #     super().readContent(content, param.tc_columns)
-
-
-    # def getContent(self):
-    #     return super().getContent()
-        
-
-    # def prepareCustomIds(self):
-    #     super().prepareCustomIds(param.link_element, param.tcReq)
-
-
-    def writeContent(self, path):
+    def write_content(self, path):
         # sort datframe, custom_id desc
         try:
-            super().sortDataFrame(param.custom_id)
-            # loop dataframe, createElement into list
-            df = super().getContent()
-            fn = super().prepareWriteFile(path, param.tcReq)
+            super().sort_dataframe(param.CUSTOM_ID)
+            # loop dataframe, create_element into list
+            df = super().get_content()
+            fn = super().prepare_write_file(path, param.TC_REQ)
             with open(fn, "w") as f:
                 for index, row in df.iterrows():
-                    #ls_prepared.append(self.createElement(row[param.content], row[param.uid], row[param.link_sr], row[param.link_element], row[param.email], row[param.date]))
-                    f.write(row[param.custom_id]+" "+self.createElement(row[param.content], row[param.uid], row[param.link_sr], row[param.link_element], row[param.email], row[param.date])+param.sep_newline+param.sep_newline)
+                    #ls_prepared.append(self.create_element(row[param.CONTENT], row[param.UID], row[param.LINK_SR], row[param.LINK_ELEMENT], row[param.EMAIL], row[param.DATE]))
+                    f.write(row[param.CUSTOM_ID]+" "+self.create_element(row[param.CONTENT], row[param.UID], row[param.LINK_SR], row[param.LINK_ELEMENT], row[param.EMAIL], row[param.DATE])+param.SEP_NEWLINE+param.SEP_NEWLINE)
         except Exception:
-            print("writeContent Exception")
+            print("write_content Exception")
 
 
-    def createElement(self, content, uid, link_sr, link_element, email, dateTime):
-        return (Element.element(content, id=uid, type=param.tcReq, link_sr=link_sr, link_element=link_element, email=email, date=dateTime))
-
-
-    # def queryDataFrame(self, column_query, value_query):
-    #     return super().queryDataFrame(column_query, value_query)
-
-
-    # def queryAllDataFrame(self, value_query):
-    #     return super().queryAllDataFrame(value_query)
-        
-
-    # def queryDuplicate(self, column):
-    #     return super().queryDuplicate(column)
+    def create_element(self, content, uid, link_sr, link_element, email, dateTime):
+        return (Element.element(content, id=uid, type=param.TC_REQ, link_sr=link_sr, link_element=link_element, email=email, date=dateTime))
