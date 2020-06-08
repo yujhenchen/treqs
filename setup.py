@@ -3,11 +3,14 @@ from setuptools import setup, find_packages
 setup(name='treqs',
       version='3.0',
       description='Tool Support for Managing Requirements in Large-Scale Agile System Development',
+      url='https://github.com/yujhenchen/treqs.git',
+      author='Yu-Jhen Chen',
+      author_email='yujhen.chen93@gmail.com',
+      license='MIT',
       packages=find_packages(),
       entry_points={
           'console_scripts': [
               'treqs=_treqs.functions.checkConsistency:check',
-              # 'generatepreview=treqs.generatePreview:generate_preview',
               'generatereq=_treqs.functions.generateReq:generate',
               'generatereqdoc=_treqs.functions.generateReqDoc:generate_doc',
           ],
