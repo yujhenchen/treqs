@@ -1,4 +1,4 @@
-# T-Reqs: Tooling to enable teams to manage system requirements in large-scale agile system develpment
+# T-Reqs: Tooling to enable teams to manage system requirements in large-scale agile system development
 
 version 3.0
 
